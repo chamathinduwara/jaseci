@@ -2,7 +2,8 @@ import {*} with "./graph.jac";
 
 walker run {
     root {
-        family_tree = spawn here ++> graph::family_tree;
+        f_tree = spawn here ++> graph::family_tree;
+        m_tree = spawn here ++> graph::family_tree;
         father = spawn node::person(
             id = "6743482333V",
             name = "John",
@@ -10,7 +11,7 @@ walker run {
             profession = "Engineer",
             gender = "Male"
         );
-        family_tree ++> father;
+        f_tree ++> father;
         mother = spawn node::person(
             id = "694343433V",
             name = "Mary",
@@ -18,17 +19,39 @@ walker run {
             profession = "Architecture",
             gender = "Female"
         );
-        family_tree ++> mother;
+        m_tree ++> mother;
         father <+[married]+> mother;
-        son = spawn node::person(
+        me = spawn node::person(
             id = "9643482333V",
             name = "George",
             date_of_birth = "1996-01-01",
             profession = "Student",
             gender = "Male"
         );
-        family_tree ++> son;
-        father +[child]+> son;
-        mother +[child]+> son;
+        f_tree ++> me;
+        father +[child]+> me;
+        mother +[child]+> me;
+
+        me = spawn node::person(
+            id = "9643482333V",
+            name = "George",
+            date_of_birth = "1996-01-01",
+            profession = "Student",
+            gender = "Male"
+        );
+        f_tree ++> me;
+        father +[child]+> me;
+        mother +[child]+> me;
+
+        me = spawn node::person(
+            id = "9643482333V",
+            name = "George",
+            date_of_birth = "1996-01-01",
+            profession = "Student",
+            gender = "Male"
+        );
+        f_tree ++> me;
+        father +[child]+> me;
+        mother +[child]+> me;
     }
 }
