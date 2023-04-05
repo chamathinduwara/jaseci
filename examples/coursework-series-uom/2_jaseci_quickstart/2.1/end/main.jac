@@ -53,5 +53,27 @@ walker run {
         f_tree ++> me;
         father +[child]+> me;
         mother +[child]+> me;
+
+        brother = spawn node::person(
+            id = "9643482333V",
+            name = "George",
+            date_of_birth = "1996-01-01",
+            profession = "Student",
+            gender = "Male"
+        );
+        f_tree ++> brother;
+        father +[child]+> brother;
+        mother +[child]+> brother;
+
+        sister = spawn node::person(
+            id = "9643482333V",
+            name = "George",
+            date_of_birth = "1996-01-01",
+            profession = "Student",
+            gender = "Female"
+        );
+        f_tree ++> sister;
+        father +[child]+> sister;
+        mother +[child]+> sister;
     }
 }
